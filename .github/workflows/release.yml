@@ -19,6 +19,9 @@ jobs:
         with:
           go-version: 1.23
 
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y libvirt-dev
+
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:

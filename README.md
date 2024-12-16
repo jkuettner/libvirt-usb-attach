@@ -4,7 +4,7 @@
 
 ## Usage
 
-```bash
+```shell
 attach an usb device by to the virtual machine/domain
 
 Usage:
@@ -21,24 +21,36 @@ Flags:
   -v, --verbose             enable verbose output
 ```
 
+## Installation
+
+simply download the latest release from https://github.com/jkuettner/libvirt-usb-attach/releases/latest, unpack it, give execute permissions and move it to your `$PATH`:
+
+```shell
+cd /tmp && \
+wget https://github.com/jkuettner/libvirt-usb-attach/releases/download/v0.0.1/libvirt-usb-attach_0.0.1_linux_amd64.tar.gz && \
+tar xfv libvirt-usb-attach_0.0.1_linux_amd64.tar.gz && \
+chmod +x libvirtusbattach && \
+mv libvirtusbattach /usr/local/bin
+```
+
 ## Examples
 
 In this example we want to attach the following usb device (output from `lsusb`):
-```bash
+```shell
 Bus 003 Device 002: ID 2357:0604 TP-Link TP-Link UB500 Adapter
 ```
 ### Attach device by bus and device number, vendor- and product-id
-```bash
+```shell
 libvirtusbattach <my-vm-name> --bus 3 --device 2 --vendor-id 2357 --product-id 0604
 ```
 or
-```bash
+```shell
 libvirtusbattach <my-vm-name> -b 3 -d 2 -V 2357 -P 0604
 ```
 
 ### Attach a USB Device Using `lsusb` output line
 
-```bash
+```shell
 echo "Bus 003 Device 002: ID 2357:0604 TP-Link TP-Link UB500 Adapter" | libvirtusbattach <my-vm-name> -p
 ```
 
@@ -46,7 +58,7 @@ echo "Bus 003 Device 002: ID 2357:0604 TP-Link TP-Link UB500 Adapter" | libvirtu
 
 ### Specify a Custom Libvirt Address
 
-```bash
+```shell
 libvirtusbattach my-vm-name \
   --address qemu+ssh://user@remote-system/system \
   --vendor-id 1234 \

@@ -1,15 +1,15 @@
-name: Release
+name: Build
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - 'main'
+  pull_request:
 
 jobs:
-  release:
-    name: Release
+  build:
+    name: build
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,6 +23,4 @@ jobs:
         uses: goreleaser/goreleaser-action@v5
         with:
           version: v2.5.0
-          args: release --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_USER_TOKEN }}
+          args: release --clean --snapshot --skip=publish

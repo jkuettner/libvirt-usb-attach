@@ -6,7 +6,6 @@ builds:
     main: cmd/main.go
     goos:
       - linux
-      - darwin
     goarch:
       - amd64
     ldflags:
@@ -37,4 +36,4 @@ changelog:
       - '^docs:'
 
 snapshot:
-  name_template: "{{ .Tag }}-{{ .ShortCommit }}"
+  version_template: "{{ .Tag }}-{{ .ShortCommit }}"

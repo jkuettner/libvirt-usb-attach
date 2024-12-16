@@ -28,4 +28,4 @@ jobs:
           version: v2.5.0
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_USER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

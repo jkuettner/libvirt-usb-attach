@@ -59,8 +59,6 @@ The tool can be used to create a script for Waybar. For example:
 
 ```json
 "custom/myvm": {
-     ...
       "on-click": "lsusb | wofi -i --dmenu | libvirtusbattach <my-vm> -p",
-      ...
 },
 ```

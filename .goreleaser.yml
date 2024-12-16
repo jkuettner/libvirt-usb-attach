@@ -1,0 +1,41 @@
+project_name: libvirt-usb-attach
+
+# Build configuration
+builds:
+  - id: libvirt-usb-attach
+    main: .
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm
+    ldflags:
+      - "-s -w"
+    binary: "libvirtusbattach"
+
+# Archive configuration
+archives:
+  - id: default
+    format: tar.gz
+    files:
+      - LICENSE
+      - README.md
+
+# Release configuration
+release:
+  github:
+    owner: jkuettner
+    name: libvirt-usb-attach
+
+checksum:
+  name_template: "{{ .ProjectName }}_checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+
+snapshot:
+  name_template: "{{ .Tag }}-{{ .ShortCommit }}"
